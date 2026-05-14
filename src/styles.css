@@ -62,16 +62,17 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1rem;
+  /* Warm cream background, soft inked foreground */
+  --background: oklch(0.985 0.012 75);
+  --foreground: oklch(0.27 0.04 25);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
+  --primary: oklch(0.62 0.18 25);
+  --primary-foreground: oklch(0.99 0.005 75);
+  --secondary: oklch(0.94 0.03 50);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
@@ -140,5 +141,18 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    background-image:
+      radial-gradient(at 20% 10%, oklch(0.92 0.06 25 / 0.5) 0px, transparent 50%),
+      radial-gradient(at 80% 90%, oklch(0.9 0.05 50 / 0.45) 0px, transparent 50%);
+    background-attachment: fixed;
+    font-family: ui-serif, Georgia, "Times New Roman", serif;
   }
 }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up { animation: fade-up 0.9s ease-out both; }
+
