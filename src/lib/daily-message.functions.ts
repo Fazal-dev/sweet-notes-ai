@@ -34,9 +34,7 @@ Today's theme: ${theme}
 Write ONLY the message itself. No preamble, no quotes, no explanation.`;
 }
 
-async function callGroq(prompt: string): Promise<string> {
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) throw new Error("GROQ_API_KEY is not set");
+async function callGroq(prompt: string, apiKey: string): Promise<string> {
 
   const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
@@ -71,9 +69,12 @@ export const getDailyMessage = createServerFn({ method: "GET" })
     const key = todayKey();
     if (!data.force && cache.has(key)) return cache.get(key)!;
 
+    const apiKey = import.meta.env.GROQ_API_KEY ?? process.env.GROQ_API_KEY;
+    if (!apiKey) throw new Error("GROQ_API_KEY is not set — add it to .env (local) or Cloudflare secrets (prod)");
+
     const date = new Date();
     const theme = themeForDate(date);
-    const message = await callGroq(buildPrompt(theme));
+    const message = await callGroq(buildPrompt(theme), apiKey);
 
     const result: DailyMessage = { date: key, theme, message };
     cache.set(key, result);

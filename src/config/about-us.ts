@@ -1,8 +1,8 @@
 // 💌 EDIT THIS FILE — this is the only thing the AI uses to write her daily message.
 // The more specific and personal you make it, the better the messages will feel.
 
-export const YOUR_NAME = "Your Name";
-export const HER_NAME = "Her Name";
+export const YOUR_NAME = "Faju";
+export const HER_NAME = "Kuttymma";
 
 export const ABOUT_US = `
 [Replace this with your real "About Us" doc.]
