@@ -1,59 +1,64 @@
-// 💌 EDIT THIS FILE — this is the only thing the AI uses to write her daily message.
 // The more specific and personal you make it, the better the messages will feel.
 
 export const YOUR_NAME = "Faju";
 export const HER_NAME = "Kuttymma";
 
 export const ABOUT_US = `
-[Replace this with your real "About Us" doc.]
 
-How we met:
-- (e.g. We met at Sarah's birthday in October 2022. She was wearing the green dress and laughed at my terrible joke about the DJ.)
+How we met: she see me in 2016 in english class for ordinary exam in DASDA intitution roomy sir class first time in red and blue shirt. after one year in ol examination she see me and follow me.
+afer exam i go for 3 month course in academy (UDT) udunuvara devlopment trust she folow me and get my phone number from my friwnd and she message me and be friend
 
 Our first date:
-- (Where you went, what she ordered, the moment you knew.)
+- in peradeni university this is not date but a meet she came to see me. she order bun and milk packet in canteen.
 
 Things I love about her:
 - The way she scrunches her nose when she's concentrating
-- How she always steals my hoodies but pretends she didn't
+- how she see in door when i leave her always.
 - Her laugh — loud, unfiltered, contagious
-- (add 5-10 more, be specific)
+- she is very emaotional sensitive , always cries when see sad movies 
+- i love her voice
+- how she calling me only (faju) in very cute way
+- she is very organized girl.
 
 Inside jokes:
-- "the pigeon incident"
-- calling each other "goose"
-- (etc.)
+- i call her kuttymma, alla bolaya ,gunfu panda
 
 Places we've been together:
-- That tiny ramen spot in Shoreditch
-- The Lisbon trip where we got lost looking for that viewpoint
-- (etc.)
+- That peradeni university under the tree
+- Peradeni university
+- inside bus back seat peradeni to geliyoya
 
 Memories that mattered:
-- The night we stayed up until 4am talking on the kitchen floor
-- The fight we had in March that ended with us laughing
-- (etc.)
+- i gave you  manyokka chips in peredeni university first time.
 
 Her favorite things:
-- Food: pad thai, dark chocolate, oat lattes
-- Songs: (artists / songs she loops)
-- Movies: (her comfort films)
+- Food: idiyappam,chocolates,stik chocholate
+- Songs: vaseegara song,
+- Movies: thalapthy vijay all flims specially thaliva
 
 Things she's insecure about that I love:
-- (the things she thinks are flaws — write why you love them)
+- (she is very emotional i love that)
+- she is over caring i love that
+-
 
 Our future:
-- The trip to Japan we keep talking about
-- Moving in together next spring
-- (your shared dreams)
+- The trip to germany her favrit country.
+- Moving in together in our private room you and me only.
+- going to hajj together.
+- help for poor peoples who dont have money to gether.
+-
 
 Her habits / quirks:
 - Always cold, always stealing the blanket
-- Sends me TikToks at 1am
-- (etc.)
+- Sends me reals in instagram in day and night.if i didt see that send link to whatsapp chat.
+- always tell me to check that real i share to you dont ignore my msgs.
+- always ask me do you realy love me?
+- always ask ia m okey for you .
+- always tells me you never leave me alone right?
+- always ask me are you angry to me ?
 `;
 
-export const THEMES = ["memory", "future", "appreciation", "funny", "deep"] as const;
+export const THEMES = [ "funny", "memory","appreciation", "deep","future"] as const;
 export type Theme = (typeof THEMES)[number];
 
 export function themeForDate(date: Date): Theme {
