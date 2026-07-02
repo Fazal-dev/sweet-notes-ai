@@ -45,8 +45,7 @@ Our future:
 - The trip to germany her favrit country.
 - Moving in together in our private room you and me only.
 - going to hajj together.
-- help for poor peoples who dont have money to gether.
--
+- help for poor peoples who dont have money together.
 
 Her habits / quirks:
 - Always cold, always stealing the blanket
