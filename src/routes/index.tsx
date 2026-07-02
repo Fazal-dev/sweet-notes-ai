@@ -55,66 +55,54 @@ function Index() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:px-6 sm:py-16">
       <div className="w-full max-w-xl">
-        <header className="text-center mb-10 animate-fade-up">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+        <header className="text-center mb-8 sm:mb-10 animate-fade-up">
+          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground sm:text-xs">
             One message a day
           </p>
-          <h1 className="mt-3 text-3xl md:text-4xl font-medium text-foreground">
+          <h1 className="mt-3 text-2xl font-medium text-foreground sm:text-3xl md:text-4xl">
             {meta.data ? `For ${meta.data.herName},` : "For you,"}
           </h1>
           {daily.data && (
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-xs text-muted-foreground sm:text-sm">
               {formatDate(daily.data.date)} · {daily.data.theme}
             </p>
           )}
         </header>
 
         <article
-          className="relative rounded-3xl border border-border bg-card/70 backdrop-blur-sm px-8 py-12 shadow-[0_30px_80px_-30px_oklch(0.62_0.18_25/0.35)] animate-fade-up"
+          className="relative rounded-3xl border border-border bg-card/70 px-5 py-8 shadow-[0_30px_80px_-30px_oklch(0.62_0.18_25/0.35)] backdrop-blur-sm sm:px-8 sm:py-12 animate-fade-up"
           style={{ animationDelay: "120ms" }}
         >
           {daily.isLoading && (
-            <p className="text-center text-muted-foreground italic">
-              writing today's message…
-            </p>
+            <p className="text-center text-muted-foreground italic">writing today's message…</p>
           )}
 
           {daily.error && (
             <div className="text-center space-y-3">
-              <p className="text-destructive">
-                Couldn't write today's message.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {(daily.error as Error).message}
-              </p>
-              <button
-                onClick={onRegenerate}
-                className="text-sm underline text-primary"
-              >
+              <p className="text-destructive">Couldn't write today's message.</p>
+              <p className="text-xs text-muted-foreground">{(daily.error as Error).message}</p>
+              <button onClick={onRegenerate} className="text-sm underline text-primary">
                 try again
               </button>
             </div>
           )}
 
           {daily.data && (
-            <p className="text-xl md:text-2xl leading-relaxed text-foreground whitespace-pre-wrap">
+            <p className="text-base leading-relaxed text-foreground whitespace-pre-wrap sm:text-xl md:text-2xl">
               {daily.data.message}
             </p>
           )}
 
           {daily.data && meta.data && (
-            <p className="mt-8 text-right text-base text-muted-foreground italic">
+            <p className="mt-8 text-right text-sm text-muted-foreground italic sm:text-base">
               — {meta.data.yourName}
             </p>
           )}
         </article>
 
-        <footer
-          className="mt-8 text-center animate-fade-up"
-          style={{ animationDelay: "240ms" }}
-        >
+        <footer className="mt-8 text-center animate-fade-up" style={{ animationDelay: "240ms" }}>
           <button
             onClick={onRegenerate}
             disabled={refreshing || daily.isLoading}
