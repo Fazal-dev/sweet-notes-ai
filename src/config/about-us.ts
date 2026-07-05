@@ -109,6 +109,11 @@ export const SPECIAL_DAYS: Array<{
   },
 ];
 
+/** Returns a Date object shifted to Sri Lanka Time (UTC+5:30) so UTC methods return correct local date parts */
+export function getSriLankaDate(date: Date = new Date()): Date {
+  return new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
+}
+
 export function themeForDate(date: Date): Theme {
   // Rotate themes deterministically by day-of-year
   const start = Date.UTC(date.getUTCFullYear(), 0, 0);

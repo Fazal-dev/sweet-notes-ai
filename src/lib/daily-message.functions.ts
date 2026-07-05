@@ -7,6 +7,7 @@ import {
   themeForDate,
   specialDayForDate,
   daysSinceStart,
+  getSriLankaDate,
   type Theme,
 } from "@/config/about-us";
 
@@ -26,8 +27,8 @@ const cache = new Map<string, DailyMessage>();
 // In-memory history log (all messages generated this session)
 const history: DailyMessage[] = [];
 
-function todayKey(): string {
-  return new Date().toISOString().slice(0, 10);
+function todayKey(slDate: Date): string {
+  return slDate.toISOString().slice(0, 10);
 }
 
 const THEME_DESCRIPTIONS: Record<string, string> = {
@@ -139,19 +140,19 @@ async function callGroq(prompt: string, apiKey: string): Promise<string> {
 export const getDailyMessage = createServerFn({ method: "GET" })
   .inputValidator((data: { force?: boolean } | undefined) => data ?? {})
   .handler(async ({ data }): Promise<DailyMessage> => {
-    const key = todayKey();
+    const slNow = getSriLankaDate();
+    const key = todayKey(slNow);
     if (!data.force && cache.has(key)) return cache.get(key)!;
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) throw new Error("GROQ_API_KEY is not set — add it in Vercel Environment Variables");
 
-    const now = new Date();
-    const specialDay = specialDayForDate(now);
-    const theme = specialDay ? specialDay.theme : themeForDate(now);
+    const specialDay = specialDayForDate(slNow);
+    const theme = specialDay ? specialDay.theme : themeForDate(slNow);
     const themeLabel = THEME_DESCRIPTIONS[theme] ?? theme;
-    const prompt = buildPrompt(theme, specialDay?.context ?? null, now);
+    const prompt = buildPrompt(theme, specialDay?.context ?? null, slNow);
     const message = await callGroq(prompt, apiKey);
-    const dayCount = daysSinceStart(now);
+    const dayCount = daysSinceStart(slNow);
 
     const result: DailyMessage = {
       date: key,
