@@ -3,62 +3,111 @@
 export const YOUR_NAME = "Faju";
 export const HER_NAME = "Kuttymma";
 
+/** The day you first texted each other — used for the "Day X of us" counter */
+export const RELATIONSHIP_START_DATE = "2018-04-05";
+
 export const ABOUT_US = `
+How we met: She first saw me in 2016 in English class for the ordinary exam at DASDA institution (Roomy sir's class). I was wearing a red and blue shirt. After one year, during the O/L examination, she saw me again and followed me. After the exam, I went for a 3-month course at UDT (Udunuwara Development Trust). She followed me there too, got my phone number from my friend, and messaged me herself — and that's how we became friends.
 
-How we met: she see me in 2016 in english class for ordinary exam in DASDA intitution roomy sir class first time in red and blue shirt. after one year in ol examination she see me and follow me.
-afer exam i go for 3 month course in academy (UDT) udunuvara devlopment trust she folow me and get my phone number from my friwnd and she message me and be friend
-
-Our first date:
-- in peradeni university this is not date but a meet she came to see me. she order bun and milk packet in canteen.
+Our first meet:
+- Peradeniya University. It wasn't a date but she came just to see me. She ordered a bun and a milk packet at the canteen.
 
 Things I love about her:
 - The way she scrunches her nose when she's concentrating
-- how she see in door when i leave her always.
+- How she always watches from the door when I leave
 - Her laugh — loud, unfiltered, contagious
-- she is very emaotional sensitive , always cries when see sad movies 
-- i love her voice
-- how she calling me only (faju) in very cute way
-- she is very organized girl.
+- She is very emotional and sensitive — always cries at sad movies
+- I love her voice so much
+- How she calls me "Faju" in that one cute, soft way only she does
+- She is a very organized person
+- She is over-caring and I love that about her
 
-Inside jokes:
-- i call her kuttymma, alla bolaya ,gunfu panda
+Inside jokes & nicknames:
+- I call her kuttymma, alla bolaya, gunfu panda
 
 Places we've been together:
-- That peradeni university under the tree
-- Peradeni university
-- inside bus back seat peradeni to geliyoya
+- Peradeniya University, under a tree
+- The bus — back seat, Peradeniya to Gelioya
 
 Memories that mattered:
-- i gave you  manyokka chips in peredeni university first time.
+- I gave her manyokka chips in Peradeniya University for the first time
+- She texted me first on April 5, 2018
 
 Her favorite things:
-- Food: idiyappam,chocolates,stik chocholate
-- Songs: vaseegara song,
-- Movies: thalapthy vijay all flims specially thaliva
+- Food: idiyappam, chocolates, stick chocolate
+- Songs: Vaseegara
+- Movies: All Thalapathy Vijay films, especially Thalaiva
 
-Things she's insecure about that I love:
-- (she is very emotional i love that)
-- she is over caring i love that
--
+Things she does that I love:
+- She sends me reels on Instagram day and night — if I don't see them, she sends the link to WhatsApp chat
+- She always says "check that reel I shared, don't ignore my messages"
+- She always asks "do you really love me?"
+- She always asks "am I okay for you?"
+- She always tells me "you'll never leave me alone, right?"
+- She always asks "are you angry at me?"
 
-Our future:
-- The trip to germany her favrit country.
-- Moving in together in our private room you and me only.
-- going to hajj together.
-- help for poor peoples who dont have money together.
-
-Her habits / quirks:
-- Always cold, always stealing the blanket
-- Sends me reals in instagram in day and night.if i didt see that send link to whatsapp chat.
-- always tell me to check that real i share to you dont ignore my msgs.
-- always ask me do you realy love me?
-- always ask ia m okey for you .
-- always tells me you never leave me alone right?
-- always ask me are you angry to me ?
+Our future dreams:
+- A trip to Germany — her favorite country
+- Moving into our own private room — just you and me
+- Going to Hajj together
+- Helping poor people together
 `;
 
-export const THEMES = [ "funny", "memory","appreciation", "deep","future"] as const;
+export const THEMES = [
+  "how-we-met",
+  "first-meet",
+  "her-voice",
+  "her-laugh",
+  "missing-her",
+  "future-germany",
+  "future-home",
+  "hajj-together",
+  "her-reels",
+  "reassurance",
+  "gunfu-panda",
+  "manyokka-memory",
+  "bus-ride",
+  "her-sensitivity",
+  "organized",
+  "idiyappam",
+  "vijay-movies",
+  "vaseegara",
+  "helping-others",
+  "deep-love",
+] as const;
+
 export type Theme = (typeof THEMES)[number];
+
+/** Special days that override the normal theme rotation */
+export const SPECIAL_DAYS: Array<{
+  month: number; // 1-indexed
+  day: number;
+  label: string;
+  theme: string;
+  context: string;
+}> = [
+  {
+    month: 7,
+    day: 4,
+    label: "her birthday 🎂",
+    theme: "birthday",
+    context: `Today is Kuttymma's birthday! She was born on July 4, 2001. Write a warm, personal, heartfelt birthday message from Faju to Kuttymma. Reference something specific about her — her laugh, her voice, how she says "Faju", her organized nature, or their memories. Make her feel truly special today. Keep it genuine, not over-the-top.`,
+  },
+  {
+    month: 4,
+    day: 5,
+    label: "first message anniversary 💬",
+    theme: "first-message-anniversary",
+    context: `Today is the anniversary of the first day Kuttymma texted Faju — April 5, 2018. She was brave enough to get his number from a friend and message him herself. That one message changed everything. Write a message that reflects on how that one text she sent started it all.`,
+  },
+  {
+    month: 5,
+    day: 22,
+    label: "love anniversary ❤️",
+    theme: "love-anniversary",
+    context: `Today is Faju and Kuttymma's love anniversary — May 22, 2018. The day they became official. Write a romantic anniversary message that reflects on how far they've come, how much she means to him, and the future they're building together (Germany, their own home, Hajj, helping others).`,
+  },
+];
 
 export function themeForDate(date: Date): Theme {
   // Rotate themes deterministically by day-of-year
@@ -66,4 +115,16 @@ export function themeForDate(date: Date): Theme {
   const diff = date.getTime() - start;
   const dayOfYear = Math.floor(diff / 86_400_000);
   return THEMES[dayOfYear % THEMES.length];
+}
+
+export function specialDayForDate(date: Date): (typeof SPECIAL_DAYS)[number] | null {
+  const month = date.getUTCMonth() + 1;
+  const day = date.getUTCDate();
+  return SPECIAL_DAYS.find((s) => s.month === month && s.day === day) ?? null;
+}
+
+export function daysSinceStart(date: Date): number {
+  const start = new Date(RELATIONSHIP_START_DATE + "T00:00:00Z").getTime();
+  const now = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+  return Math.floor((now - start) / 86_400_000) + 1;
 }
