@@ -46,6 +46,10 @@ Things she does that I love:
 - She always tells me "you'll never leave me alone, right?"
 - She always asks "are you angry at me?"
 
+Our milestones & special memories:
+- July 13, 2025: For the first time, Faju and his family visited Kuttymma's home. That was the day both families met and they started talking about their wedding — the beginning of a new chapter.
+- February 13, 2026: Faju and his family visited Kuttymma's home again — and this time they put the ring on her finger. She is officially his. The wedding date is not fixed yet, but she is truly his Kuttymma forever.
+
 Our future dreams:
 - A trip to Germany — her favorite country
 - Moving into our own private room — just you and me
@@ -106,6 +110,20 @@ export const SPECIAL_DAYS: Array<{
     label: "love anniversary ❤️",
     theme: "love-anniversary",
     context: `Today is Faju and Kuttymma's love anniversary — May 22, 2018. The day they became official. Write a romantic anniversary message that reflects on how far they've come, how much she means to him, and the future they're building together (Germany, their own home, Hajj, helping others).`,
+  },
+  {
+    month: 7,
+    day: 13,
+    label: "first family visit 🏠",
+    theme: "first-family-visit",
+    context: `Today marks the anniversary of July 13, 2025 — the beautiful day when Faju and his family visited Kuttymma's home for the very first time. Both families sat together and started talking about their wedding. It was the moment everything became real — two families, one future. Write a warm, heartfelt message from Faju to Kuttymma remembering that special day, how nervous and happy he felt, and how seeing her in her own home made her feel even more precious to him.`,
+  },
+  {
+    month: 2,
+    day: 13,
+    label: "ring day 💍",
+    theme: "ring-day",
+    context: `Today marks the anniversary of February 13, 2026 — the day Faju and his family visited Kuttymma's home and put the ring on her finger. She became officially his Kuttymma. The wedding date is not fixed yet, but that ring said everything — she is his, and he is hers, forever. Write a deeply romantic and emotional message from Faju to Kuttymma remembering that day — how his heart felt when he slipped the ring on her finger, how she looked, and how certain he is that she is the one.`,
   },
 ];
 
